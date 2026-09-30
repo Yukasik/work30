@@ -1,0 +1,31 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('админка') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    @foreach($repairRequests as $repairRequest)
+                    <div class="border border-solid border-black">
+                    {{$repairRequest -> car -> brand}}<br>
+                    {{$repairRequest -> car -> model}}<br>
+                    {{$repairRequest -> car -> registration_number}}<br>
+                    {{$repairRequest -> problem_description}}<br>
+                    @if(is_null($repairRequest -> repair_date))
+                        <p>Дата еще не назначена</p><br>
+                        @else
+                        {{$repairRequest -> repair_date}}<br>
+                    @endif
+                    {{$repairRequest -> status}}<br>
+                    </div>
+                    @endforeach
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
