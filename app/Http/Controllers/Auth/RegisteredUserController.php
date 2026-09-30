@@ -31,7 +31,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255', 'regex:/^[а-яёА-ЯЁ\s-]+$/u'],
             'lastname' => ['required', 'string', 'max:255'],
             'middlename' => ['required', 'string', 'max:255'],
             'tel' => ['required', 'string', 'max:255'],
